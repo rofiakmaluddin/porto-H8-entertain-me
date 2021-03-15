@@ -1,4 +1,4 @@
-const TvSeriesController = require('../controllers/TvSeriesController')
+const TvSeriesController = require('../controllers')
 
 const router = require('express').Router()
 

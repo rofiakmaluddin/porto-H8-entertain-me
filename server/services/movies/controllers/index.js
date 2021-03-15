@@ -1,4 +1,4 @@
-const Movie = require("../models/Movie");
+const Movie = require("../models");
 
 class MovieController {
   static async findMovies(req, res, next) {

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const MovieController = require('../controllers/MovieController')
+const MovieController = require('../controllers/movieController')
 
 router.get('/', MovieController.findMovies)
 router.get('/:id', MovieController.findOneMovies)

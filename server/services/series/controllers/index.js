@@ -1,4 +1,4 @@
-const TvSeries = require("../models/TvSeries");
+const TvSeries = require("../models");
 
 class TvSeriesController{
   static async findTvSeries(req, res, next) {

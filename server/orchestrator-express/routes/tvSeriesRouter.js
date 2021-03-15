@@ -1,6 +1,5 @@
-const TvSeriesController = require('../controllers/TvSeriesController')
-
 const router = require('express').Router()
+const TvSeriesController = require('../controllers/tvSeriesController')
 
 router.get('/', TvSeriesController.findTvSeries)
 router.get('/:id', TvSeriesController.findOneTvSeries)
