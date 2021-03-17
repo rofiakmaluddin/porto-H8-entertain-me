@@ -1,25 +1,49 @@
 import React from 'react'
-import { useReactiveVar } from "@apollo/client";
-import { favoritesVar } from '../config/vars'
+import { useQuery, gql } from '@apollo/client';
 import TableBody from "../components/TableBody";
 
-export default function Home() {
-  const favorites = useReactiveVar(favoritesVar)
-
-  if (!favorites.length) {
-    return <h1>No Movie or TV Series in Favorites</h1>
+const GET_ALL = gql`
+  query getAll {
+    getMovies{
+      _id
+      title
+      overview
+      poster_path
+      popularity
+      tags
+    }
+    getTvSeries{
+      _id
+      title
+      overview
+      poster_path
+      popularity
+      tags
+    }
   }
+`
 
+export default function Movies() {
+  const { loading, error, data: allData } = useQuery(GET_ALL); //hanya ketika mounted atau dirender
+  const tempAllData = [...allData.getMovies, ...allData.getTvSeries]
+  if (loading) {
+    return <h1>loading...</h1>
+  }
+  if (error) {
+    return <h1>Error...</h1>
+  }
   return (
     <div>
-      <h1>Favorites</h1>
-      {/* {
-        JSON.stringify(favorites)
-      } */}
+      <h1>All Data</h1>
+      {
+        // JSON.stringify(allData.getMovies),
+        // JSON.stringify(allData.getTvSeries)
+        // JSON.stringify(tempAllData)
+      }
       <table className="table">
         <thead className="thead-dark">
           <tr>
-          <th scope="col">No. </th>
+            <th scope="col">No. </th>
             <th scope="col">Title</th>
             <th scope="col">Overview</th>
             <th scope="col">Popularity</th>
@@ -30,7 +54,7 @@ export default function Home() {
         </thead>
         <tbody>
           {
-            favorites.map((fav, idx) => <TableBody category="favorite" key={fav._id} data={fav} idx={idx}/>)
+            tempAllData.map((data, idx) => <TableBody category="all" key={data._id} data={data} idx={idx}/>)
           }
         </tbody>
       </table>

@@ -1,11 +1,12 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Favorite from "./pages/Favorite";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Add from "./pages/Add";
 import Update from "./pages/Update";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
         <Route path="/movies">
           <Navbar />
           <Movies />
+        </Route>
+        <Route path="/favorites">
+          <Navbar />
+          <Favorite />
         </Route>
         <Route path="/">
           <Navbar />

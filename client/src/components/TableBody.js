@@ -94,6 +94,24 @@ export default function TableBody(props) {
         </td>
       </tr>
     )
+  } else if (category === 'all') {
+    return (
+      <tr>
+        <th scope="row">{ idx + 1 }</th>
+        <td>{ data.title }</td>
+        <td>{ data.overview }</td>
+        <td>{ data.popularity }</td>
+        <td>{ data.tags }</td>
+        <td>{ data.__typename }</td>
+        <td>
+          <div className="btn-group" role="group" aria-label="Basic example">
+            <button onClick={ clickUpdate } type="button" className="btn btn-secondary">Update</button>
+            <button onClick={ addToFav } type="button" className="btn btn-info">Favorite</button>
+            <button onClick={ clickDelete } type="button" className="btn btn-light">Delete</button>
+          </div>
+        </td>
+      </tr>
+    )
   }
 
   return (
