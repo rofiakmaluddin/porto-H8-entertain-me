@@ -1,7 +1,7 @@
 const express = require('express')
 const { connect } = require('./config/mongodb')
 const app = express()
-const port = 3000 || process.env.PORT
+const port = process.env.PORT || 3000
 const router = require('./routes')
 
 app.use(express.json())
